@@ -1,0 +1,45 @@
+### Racing .gitignore
+#
+
+### GNU Auto-Tools generated files
+Makefile
+Makefile.in
+autom4te.cache/
+config.log
+config.status
+configure
+aclocal.m4
+install-sh
+stamp-h1
+missing
+config.guess
+config.h
+config.h.in
+config.sub
+config.h.in~
+
+### Doxygen development files
+Doxyfile
+
+### Racing Binaries
+Racing*.exe*
+racing*.pdb
+racing*.ilk
+Racing*.ilk
+racing*.idb
+.deps
+*.o
+*.a
+Racing
+racing
+
+.DS_Store
+Racing.tmproj
+*.swp
+
+### Eclipse IDE files
+.project
+.cproject
+
+### Unix-y 'local' files
+*
