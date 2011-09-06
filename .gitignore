@@ -17,6 +17,13 @@ config.h
 config.h.in
 config.sub
 config.h.in~
+depcomp
+
+###Log files
+autoscan.log
+
+###Metadata
+.metadata
 
 ### Doxygen development files
 Doxyfile
@@ -41,5 +48,3 @@ Racing.tmproj
 .project
 .cproject
 
-### Unix-y 'local' files
-*
