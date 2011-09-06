@@ -1,0 +1,107 @@
+\hypertarget{_graphics_8cpp}{
+\section{\-Source/\-Graphics.cpp \-File \-Reference}
+\label{_graphics_8cpp}\index{\-Source/\-Graphics.\-cpp@{\-Source/\-Graphics.\-cpp}}
+}
+{\ttfamily \#include $<$iostream$>$}\*
+{\ttfamily \#include $<$fstream$>$}\*
+{\ttfamily \#include \char`\"{}\-Graphics.\-h\char`\"{}}\*
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\-G\-Luint \hyperlink{_graphics_8cpp_aa47236382bb22380aba5cc691e947cc1}{make\-Buffer} (\-G\-Lenum target, const void $\ast$data, \-G\-Lsizei data\-\_\-size, \-G\-Lenum use)
+\item 
+\-G\-Lchar $\ast$ \hyperlink{_graphics_8cpp_ab2f745835598466c920645c967a27f9b}{store\-File} (const char $\ast$filename, \-G\-Lint \&length)
+\item 
+\-G\-Luint \hyperlink{_graphics_8cpp_a995166556c3db533e8410aed111eb1ba}{make\-Shader} (\-G\-Lenum type, const char $\ast$filename)
+\item 
+\-G\-Luint \hyperlink{_graphics_8cpp_aae9cc6fe3fb355594b081899dddcce50}{make\-Program} (\-G\-Luint vertex\-Shader, \-G\-Luint fragment\-Shader)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{_graphics_8cpp_aa47236382bb22380aba5cc691e947cc1}{
+\index{\-Graphics.\-cpp@{\-Graphics.\-cpp}!make\-Buffer@{make\-Buffer}}
+\index{make\-Buffer@{make\-Buffer}!Graphics.cpp@{\-Graphics.\-cpp}}
+\subsubsection[{make\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}\-G\-Luint make\-Buffer (
+\begin{DoxyParamCaption}
+\item[{\-G\-Lenum}]{target, }
+\item[{const void $\ast$}]{data, }
+\item[{\-G\-Lsizei}]{data\-\_\-size, }
+\item[{\-G\-Lenum}]{use}
+\end{DoxyParamCaption}
+)}}
+\label{_graphics_8cpp_aa47236382bb22380aba5cc691e947cc1}
+make\-Buffer creates a buffer object 
+\begin{DoxyParams}{\-Parameters}
+{\em target} & a \-G\-Lenum that specifiecs the type the object is bound to. \\
+\hline
+{\em data} & a void$\ast$ the data the buffer will be associated with. \\
+\hline
+{\em data\-\_\-size} & a \-G\-Lsizei the size of the data. \\
+\hline
+{\em use} & a \-G\-Lenum representing the intended use of the buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+returns a buffer object of type \-G\-Luint 
+\end{DoxyReturn}
+\hypertarget{_graphics_8cpp_aae9cc6fe3fb355594b081899dddcce50}{
+\index{\-Graphics.\-cpp@{\-Graphics.\-cpp}!make\-Program@{make\-Program}}
+\index{make\-Program@{make\-Program}!Graphics.cpp@{\-Graphics.\-cpp}}
+\subsubsection[{make\-Program}]{\setlength{\rightskip}{0pt plus 5cm}\-G\-Luint make\-Program (
+\begin{DoxyParamCaption}
+\item[{\-G\-Luint}]{vertex\-Shader, }
+\item[{\-G\-Luint}]{fragment\-Shader}
+\end{DoxyParamCaption}
+)}}
+\label{_graphics_8cpp_aae9cc6fe3fb355594b081899dddcce50}
+make\-Program creates a shader program 
+\begin{DoxyParams}{\-Parameters}
+{\em vertex\-Shader} & the vertex shader as a \-G\-Luint \\
+\hline
+{\em fragment\-Shader} & the fragment shader as a \-G\-Luint \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+on success returns the associated \-G\-Luint and on failure returns -\/1 
+\end{DoxyReturn}
+\hypertarget{_graphics_8cpp_a995166556c3db533e8410aed111eb1ba}{
+\index{\-Graphics.\-cpp@{\-Graphics.\-cpp}!make\-Shader@{make\-Shader}}
+\index{make\-Shader@{make\-Shader}!Graphics.cpp@{\-Graphics.\-cpp}}
+\subsubsection[{make\-Shader}]{\setlength{\rightskip}{0pt plus 5cm}\-G\-Luint make\-Shader (
+\begin{DoxyParamCaption}
+\item[{\-G\-Lenum}]{type, }
+\item[{const char $\ast$}]{filename}
+\end{DoxyParamCaption}
+)}}
+\label{_graphics_8cpp_a995166556c3db533e8410aed111eb1ba}
+make\-Shader makes and returns a shader 
+\begin{DoxyParams}{\-Parameters}
+{\em type} & the type of shader \\
+\hline
+{\em filename} & the file name as a const char$\ast$ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+returns a \-G\-Luint that is associated with the shader on success and on failure returns -\/1 
+\end{DoxyReturn}
+\hypertarget{_graphics_8cpp_ab2f745835598466c920645c967a27f9b}{
+\index{\-Graphics.\-cpp@{\-Graphics.\-cpp}!store\-File@{store\-File}}
+\index{store\-File@{store\-File}!Graphics.cpp@{\-Graphics.\-cpp}}
+\subsubsection[{store\-File}]{\setlength{\rightskip}{0pt plus 5cm}\-G\-Lchar$\ast$ store\-File (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{filename, }
+\item[{\-G\-Lint \&}]{length}
+\end{DoxyParamCaption}
+)}}
+\label{_graphics_8cpp_ab2f745835598466c920645c967a27f9b}
+stor\-File reads and returns data from a file 
+\begin{DoxyParams}{\-Parameters}
+{\em filename} & the name of the file as const char$\ast$ \\
+\hline
+{\em length} & a \-G\-Lint\& returns the length of the file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+returns a \-G\-Lchar$\ast$ that stores the text of the file 
+\end{DoxyReturn}

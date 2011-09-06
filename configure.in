@@ -1,0 +1,109 @@
+#                                               -*- Autoconf -*-
+# Process this file with autoconf to produce a configure script.
+
+
+AC_PREREQ(2.61)
+AC_INIT(Racing, 0.0.1)
+
+AC_CANONICAL_TARGET 
+
+AM_INIT_AUTOMAKE
+AC_CONFIG_FILES([Makefile])
+AC_CONFIG_SRCDIR([Source/main.cpp])
+AC_CONFIG_HEADER([config.h])
+
+
+# Checks for programs.
+AC_PROG_CPP
+AC_PROG_CXX
+AC_PROG_CC
+AC_LANG(C++)
+
+if test "$ac_cv_prog_cxx_g" == no
+then 
+	AC_MSG_ERROR([No C++ compiler detected])
+fi
+
+# Check for Opengl.
+
+case "$target" in
+*-*-linux* | *-*-cygwin* | *-*-mingw32*)
+	 
+	AC_CHECK_HEADERS(GL/gl.h GL/glu.h GL/glext.h GL/glut.h, ,
+        	[have_gl_headers=no],
+	       [[#ifdef WIN32
+        	#include <windows.h>
+		#endif
+		#include <GL/gl.h>
+		#include <GL/glut.h>
+		#endif
+		]])
+	have_gl=no
+	have_glu=no
+	have_glut=no
+	AC_CHECK_LIB(GL, main, [LIBS="$LIBS -lGL"; have_gl=yes])
+	AC_CHECK_LIB(GLU, main, [LIBS="$LIBS -lGLU"; have_glu=yes], , -lGL)
+	AC_CHECK_LIB(GLUT, main, [LIBS="$LIBS -lGLUT -LGLU"; have_glut=yes], ,-lGLUT)
+
+	if test $have_gl_headers = no -o $have_gl = no -o $have_glu = no -o $have_glut = no; then
+		AC_MSG_ERROR([Opengl not found])
+	fi
+esac
+case "$target" in
+	*-apple-darwin*)
+
+	CFLAGS="$CFLAGS -DCOMP_GCC  -I/System/Library/Frameworks/OpenGL.framework/Headers -I/System/Library/Frameworks/GLUT.framework/Headers"
+	LIBS="$LIBS -framework OpenGL -framework GLUT"
+
+esac
+
+# Glew
+GLEW_CFLAGS=""
+GLEW_LIBS="-lGLEW"	
+PKG_CHECK_MODULES(GLEW, [glew], [], [
+		  AC_CHECK_HEADER([GL/glew.h],
+		  [],
+		  AC_MSG_ERROR([GLEW required]))
+		  AC_CHECK_LIB([GLEW],
+			       [glewInit],
+			       [],
+			       AC_MSG_ERROR([GLEW required]))
+		  ])
+CFLAGS="$CFLAGS $GLEW_CFLAGS"
+LIBS="$LIBS $GLEW_LIBS"
+
+AC_MSG_NOTICE([CFLAGS equals "$CFLAGS"])
+AC_MSG_NOTICE([LIBS equals "$LIBS"])
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_C_CONST
+AC_HEADER_STDBOOL
+
+# Checks for library functions.
+AC_FUNC_MALLOC
+
+case "$target" in
+*-*-mingw32*)
+LIBS="$LIBS -lopengl32"
+;;
+esac
+
+case "$target" in
+*-*-linux* | *-*-freebsd*)
+CFLAGS="$CFLAGS -DUNIX -I/usr/include/GL"
+LIBS="$LIBS -lGL -lGLU -lz"
+;;
+esac
+
+case "$target" in
+*-apple-darwin*)
+CFLAGS="$CFLAGS -DDARWIN"
+LIBS="$LIBS"
+;;
+esac
+
+CFLAGS="$CFLAGS -Wall"
+CXXFLAGS="$CFLAGS"
+
+
+AC_OUTPUT

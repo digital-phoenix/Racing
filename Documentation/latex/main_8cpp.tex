@@ -1,0 +1,121 @@
+\hypertarget{main_8cpp}{
+\section{\-Source/main.cpp \-File \-Reference}
+\label{main_8cpp}\index{\-Source/main.\-cpp@{\-Source/main.\-cpp}}
+}
+{\ttfamily \#include $<$fstream$>$}\*
+{\ttfamily \#include $<$iostream$>$}\*
+{\ttfamily \#include $<$new$>$}\*
+{\ttfamily \#include $<$string$>$}\*
+{\ttfamily \#include $<$vector$>$}\*
+{\ttfamily \#include \char`\"{}3dmath.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}\-Camera.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}\-Frustum.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}\-Graphics.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}\-Matrix.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}\-Matrix4f.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}\-Model.\-h\char`\"{}}\*
+{\ttfamily \#include $<$math.\-h$>$}\*
+\subsection*{\-Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structshader_resources}{shader\-Resources}
+\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{main_8cpp_a5591b3f6c5faa229a6225fdcfd0d852d}{\-Change\-Size} (int w, int h)
+\item 
+void \hyperlink{main_8cpp_a44ff803259c578ca5d5d111c1ab3d2b1}{\-Setup\-R\-C} ()
+\item 
+void \hyperlink{main_8cpp_a7e92f1d8e86bf17b59ca758ce3664e52}{\-Render\-Scene} (void)
+\item 
+void \hyperlink{main_8cpp_ac852cd8822679f34b9d1dd3896d6f6de}{\-Special\-Keys} (int key, int x, int y)
+\item 
+int \hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+\subsection*{\-Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_frustum}{\-Frustum} \hyperlink{main_8cpp_a6a9d3809951d2120fba3f35d97c4b244}{projection\-Matrix}
+\item 
+\hyperlink{structshader_resources}{shader\-Resources} \hyperlink{main_8cpp_ad9ce3248c9cd052083f499e35ed155bc}{shader}
+\item 
+\hyperlink{class_model}{\-Model} $\ast$ \hyperlink{main_8cpp_a9d3f62c977acfeed1d028863620840bb}{test}
+\item 
+\hyperlink{class_camera}{\-Camera} \hyperlink{main_8cpp_a2008f4ab70b5e4104c2ca43932536ddf}{camera}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{main_8cpp_a5591b3f6c5faa229a6225fdcfd0d852d}{
+\index{main.\-cpp@{main.\-cpp}!\-Change\-Size@{\-Change\-Size}}
+\index{\-Change\-Size@{\-Change\-Size}!main.cpp@{main.\-cpp}}
+\subsubsection[{\-Change\-Size}]{\setlength{\rightskip}{0pt plus 5cm}void \-Change\-Size (
+\begin{DoxyParamCaption}
+\item[{int}]{w, }
+\item[{int}]{h}
+\end{DoxyParamCaption}
+)}}
+\label{main_8cpp_a5591b3f6c5faa229a6225fdcfd0d852d}
+\hypertarget{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{
+\index{main.\-cpp@{main.\-cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.\-cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}}
+\label{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}
+\hypertarget{main_8cpp_a7e92f1d8e86bf17b59ca758ce3664e52}{
+\index{main.\-cpp@{main.\-cpp}!\-Render\-Scene@{\-Render\-Scene}}
+\index{\-Render\-Scene@{\-Render\-Scene}!main.cpp@{main.\-cpp}}
+\subsubsection[{\-Render\-Scene}]{\setlength{\rightskip}{0pt plus 5cm}void \-Render\-Scene (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{main_8cpp_a7e92f1d8e86bf17b59ca758ce3664e52}
+\hypertarget{main_8cpp_a44ff803259c578ca5d5d111c1ab3d2b1}{
+\index{main.\-cpp@{main.\-cpp}!\-Setup\-R\-C@{\-Setup\-R\-C}}
+\index{\-Setup\-R\-C@{\-Setup\-R\-C}!main.cpp@{main.\-cpp}}
+\subsubsection[{\-Setup\-R\-C}]{\setlength{\rightskip}{0pt plus 5cm}void \-Setup\-R\-C (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{main_8cpp_a44ff803259c578ca5d5d111c1ab3d2b1}
+\hypertarget{main_8cpp_ac852cd8822679f34b9d1dd3896d6f6de}{
+\index{main.\-cpp@{main.\-cpp}!\-Special\-Keys@{\-Special\-Keys}}
+\index{\-Special\-Keys@{\-Special\-Keys}!main.cpp@{main.\-cpp}}
+\subsubsection[{\-Special\-Keys}]{\setlength{\rightskip}{0pt plus 5cm}void \-Special\-Keys (
+\begin{DoxyParamCaption}
+\item[{int}]{key, }
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)}}
+\label{main_8cpp_ac852cd8822679f34b9d1dd3896d6f6de}
+
+
+\subsection{\-Variable \-Documentation}
+\hypertarget{main_8cpp_a2008f4ab70b5e4104c2ca43932536ddf}{
+\index{main.\-cpp@{main.\-cpp}!camera@{camera}}
+\index{camera@{camera}!main.cpp@{main.\-cpp}}
+\subsubsection[{camera}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Camera} {\bf camera}}}
+\label{main_8cpp_a2008f4ab70b5e4104c2ca43932536ddf}
+\hypertarget{main_8cpp_a6a9d3809951d2120fba3f35d97c4b244}{
+\index{main.\-cpp@{main.\-cpp}!projection\-Matrix@{projection\-Matrix}}
+\index{projection\-Matrix@{projection\-Matrix}!main.cpp@{main.\-cpp}}
+\subsubsection[{projection\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Frustum} {\bf projection\-Matrix}}}
+\label{main_8cpp_a6a9d3809951d2120fba3f35d97c4b244}
+\hypertarget{main_8cpp_ad9ce3248c9cd052083f499e35ed155bc}{
+\index{main.\-cpp@{main.\-cpp}!shader@{shader}}
+\index{shader@{shader}!main.cpp@{main.\-cpp}}
+\subsubsection[{shader}]{\setlength{\rightskip}{0pt plus 5cm}{\bf shader\-Resources} {\bf shader}}}
+\label{main_8cpp_ad9ce3248c9cd052083f499e35ed155bc}
+\hypertarget{main_8cpp_a9d3f62c977acfeed1d028863620840bb}{
+\index{main.\-cpp@{main.\-cpp}!test@{test}}
+\index{test@{test}!main.cpp@{main.\-cpp}}
+\subsubsection[{test}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Model}$\ast$ {\bf test}}}
+\label{main_8cpp_a9d3f62c977acfeed1d028863620840bb}

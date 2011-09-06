@@ -1,0 +1,173 @@
+\hypertarget{class_matrix4f}{
+\section{\-Matrix4f \-Class \-Reference}
+\label{class_matrix4f}\index{\-Matrix4f@{\-Matrix4f}}
+}
+
+
+{\ttfamily \#include $<$\-Matrix4f.\-h$>$}
+
+\-Inheritance diagram for \-Matrix4f\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_matrix4f}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_matrix4f}{\-Matrix4f} \hyperlink{class_matrix4f_a8e06b155b8ee0414bf46103dc4d66856}{operator=} (const \hyperlink{class_matrix}{\-Matrix} \&rhs)
+\item 
+\hyperlink{class_matrix4f_a2aea81514a71d644a97d8d0b3971a858}{\-Matrix4f} ()
+\item 
+\hyperlink{class_matrix4f_ae52bef2ab502a173e03fdd6913a215e5}{\-Matrix4f} (std\-::vector$<$ \-G\-Lfloat $>$ \hyperlink{class_matrix_a7b0bacf179e0b5ac7d5e74b7eff9e353}{values})
+\item 
+\hyperlink{class_matrix4f}{\-Matrix4f} \hyperlink{class_matrix4f_ab5601849252dfee2b0a3475b1620b545}{rotate} (\-G\-Lfloat x, \-G\-Lfloat y, \-G\-Lfloat z)
+\item 
+\hyperlink{class_matrix4f}{\-Matrix4f} \hyperlink{class_matrix4f_a63e0c8b1c4a13bb98de2b85af70b300b}{translate} (\-G\-Lfloat x, \-G\-Lfloat y, \-G\-Lfloat z)
+\item 
+\hyperlink{class_matrix4f}{\-Matrix4f} \hyperlink{class_matrix4f_aa6b9fbf059fef2d6807a14940f8c2915}{scale} (\-G\-Lfloat x, \-G\-Lfloat y, \-G\-Lfloat z)
+\item 
+void \hyperlink{class_matrix4f_ac76d8eddcf58efbcb08148c883717498}{load\-Uniform} (\-G\-Lint loc)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\hyperlink{class_matrix4f}{\-Matrix4f} a 4x4 matrix class. 
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_matrix4f_a2aea81514a71d644a97d8d0b3971a858}{
+\index{\-Matrix4f@{\-Matrix4f}!\-Matrix4f@{\-Matrix4f}}
+\index{\-Matrix4f@{\-Matrix4f}!Matrix4f@{\-Matrix4f}}
+\subsubsection[{\-Matrix4f}]{\setlength{\rightskip}{0pt plus 5cm}\-Matrix4f\-::\-Matrix4f (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_matrix4f_a2aea81514a71d644a97d8d0b3971a858}
+\-A constructor that sets this matrix to the identity matrix. \hypertarget{class_matrix4f_ae52bef2ab502a173e03fdd6913a215e5}{
+\index{\-Matrix4f@{\-Matrix4f}!\-Matrix4f@{\-Matrix4f}}
+\index{\-Matrix4f@{\-Matrix4f}!Matrix4f@{\-Matrix4f}}
+\subsubsection[{\-Matrix4f}]{\setlength{\rightskip}{0pt plus 5cm}\-Matrix4f\-::\-Matrix4f (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ \-G\-Lfloat $>$}]{values}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_matrix4f_ae52bef2ab502a173e03fdd6913a215e5}
+\-A constructor that sets this matrix to values. 
+\begin{DoxyParams}{\-Parameters}
+{\em values} & a 16 element vector$<$\-G\-Lfloat$>$ representing the values to set this matrix to. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_matrix4f_ac76d8eddcf58efbcb08148c883717498}{
+\index{\-Matrix4f@{\-Matrix4f}!load\-Uniform@{load\-Uniform}}
+\index{load\-Uniform@{load\-Uniform}!Matrix4f@{\-Matrix4f}}
+\subsubsection[{load\-Uniform}]{\setlength{\rightskip}{0pt plus 5cm}void \-Matrix4f\-::load\-Uniform (
+\begin{DoxyParamCaption}
+\item[{\-G\-Lint}]{loc}
+\end{DoxyParamCaption}
+)}}
+\label{class_matrix4f_ac76d8eddcf58efbcb08148c883717498}
+sends the data of this matrix as a matrixuniform. 
+\begin{DoxyParams}{\-Parameters}
+{\em loc} & the corresponding location. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_matrix4f_a8e06b155b8ee0414bf46103dc4d66856}{
+\index{\-Matrix4f@{\-Matrix4f}!operator=@{operator=}}
+\index{operator=@{operator=}!Matrix4f@{\-Matrix4f}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix4f} \-Matrix4f\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Matrix} \&}]{rhs}
+\end{DoxyParamCaption}
+)}}
+\label{class_matrix4f_a8e06b155b8ee0414bf46103dc4d66856}
+overloads the = operator. 
+\begin{DoxyParams}{\-Parameters}
+{\em rhs} & the other matrix. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+this matrix with its new values. 
+\end{DoxyReturn}
+
+
+\-Reimplemented from \hyperlink{class_matrix_a130e415b12d0a0c338d8d0961131bc3e}{\-Matrix}.
+
+\hypertarget{class_matrix4f_ab5601849252dfee2b0a3475b1620b545}{
+\index{\-Matrix4f@{\-Matrix4f}!rotate@{rotate}}
+\index{rotate@{rotate}!Matrix4f@{\-Matrix4f}}
+\subsubsection[{rotate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix4f} \-Matrix4f\-::rotate (
+\begin{DoxyParamCaption}
+\item[{\-G\-Lfloat}]{x, }
+\item[{\-G\-Lfloat}]{y, }
+\item[{\-G\-Lfloat}]{z}
+\end{DoxyParamCaption}
+)}}
+\label{class_matrix4f_ab5601849252dfee2b0a3475b1620b545}
+transforms this matrix by rotating it. 
+\begin{DoxyParams}{\-Parameters}
+{\em x} & \-G\-Lfloat the x angle to be rotated by. \\
+\hline
+{\em y} & \-G\-Lfloat the y angle to be rotated by. \\
+\hline
+{\em z} & \-G\-Lfloat the z angle to be rotated by. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+returns this newly transformed matrix. 
+\end{DoxyReturn}
+\hypertarget{class_matrix4f_aa6b9fbf059fef2d6807a14940f8c2915}{
+\index{\-Matrix4f@{\-Matrix4f}!scale@{scale}}
+\index{scale@{scale}!Matrix4f@{\-Matrix4f}}
+\subsubsection[{scale}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix4f} \-Matrix4f\-::scale (
+\begin{DoxyParamCaption}
+\item[{\-G\-Lfloat}]{x, }
+\item[{\-G\-Lfloat}]{y, }
+\item[{\-G\-Lfloat}]{z}
+\end{DoxyParamCaption}
+)}}
+\label{class_matrix4f_aa6b9fbf059fef2d6807a14940f8c2915}
+transforms this matrix by scaling it. 
+\begin{DoxyParams}{\-Parameters}
+{\em x} & \-G\-Lfloat the x amount to be scaled by. \\
+\hline
+{\em y} & \-G\-Lfloat the y amount to be scaled by. \\
+\hline
+{\em z} & \-G\-Lfloat the z amount to be scaled by. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+returns this newly transformed matrix. 
+\end{DoxyReturn}
+\hypertarget{class_matrix4f_a63e0c8b1c4a13bb98de2b85af70b300b}{
+\index{\-Matrix4f@{\-Matrix4f}!translate@{translate}}
+\index{translate@{translate}!Matrix4f@{\-Matrix4f}}
+\subsubsection[{translate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix4f} \-Matrix4f\-::translate (
+\begin{DoxyParamCaption}
+\item[{\-G\-Lfloat}]{x, }
+\item[{\-G\-Lfloat}]{y, }
+\item[{\-G\-Lfloat}]{z}
+\end{DoxyParamCaption}
+)}}
+\label{class_matrix4f_a63e0c8b1c4a13bb98de2b85af70b300b}
+transforms this matrix by translating it. 
+\begin{DoxyParams}{\-Parameters}
+{\em x} & \-G\-Lfloat the x distance to be translated by. \\
+\hline
+{\em y} & \-G\-Lfloat the y distance to be translated by. \\
+\hline
+{\em z} & \-G\-Lfloat the z distance to be translated by. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+returns this newly transformed matrix. 
+\end{DoxyReturn}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-Source/\hyperlink{_matrix4f_8h}{\-Matrix4f.\-h}\item 
+\-Source/\hyperlink{_matrix4f_8cpp}{\-Matrix4f.\-cpp}\end{DoxyCompactItemize}
