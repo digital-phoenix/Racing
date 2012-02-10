@@ -21,6 +21,25 @@
 #define NUM_DIMENSIONS 3
 
 /**
+ *Structure containing shader resources
+ */
+typedef struct{
+    
+    GLuint vertexShader, fragmentShader, program;
+    
+    struct {
+        GLint colour;  
+        GLint modelViewProjectionMatrix;
+    }uniforms;
+    
+    struct{
+        GLint pos;
+    }attributes;
+    
+}shaderResources;
+
+
+/**
  *makeBuffer creates a buffer object
  *@param target a GLenum that specifiecs the type the object is bound to.
  *@param data a void* the data the buffer will be associated with.

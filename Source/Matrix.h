@@ -80,7 +80,7 @@ class Matrix{
         */
         int getHeight()const{return height;}
         
-    
+        void printMatrix();
     protected:
         int width;
         int height;       

@@ -8,7 +8,9 @@
 
 #ifndef _Matrix4f_h
 #define _Matrix4f_h
+
 #include"Matrix.h"
+#include"Vector.h"
 #include<vector>
 
 #define NUM_ELEMENTS 16
@@ -28,6 +30,21 @@ class Matrix4f: public Matrix{
          */
         Matrix4f operator=(const Matrix& rhs);
         
+        
+        /**
+         *Multiplies this matrix with a vector
+         *@param rhs the vector to multiply by.
+         *@return returns a constant matrix created by multiplying this by rhs
+         */
+        const Matrix4f operator*(const Matrix4f &rhs)const;
+        
+        /**
+         *Multiplies this matrix with a vector
+         *@param rhs the vector to multiply by.
+         *@return returns a constant matrix created by multiplying this by rhs
+         */
+        const Matrix operator*(const Vector &rhs)const;
+
         /**
          *A constructor that sets this matrix to the identity matrix.
          */

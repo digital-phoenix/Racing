@@ -9,6 +9,7 @@
 #ifndef Racing_Model_h
 #define Racing_Model_h
 
+#include<string>
 #include "Graphics.h"
 
 /**
@@ -22,7 +23,14 @@ class Model{
          *sets the data of the model name to the information int the ogl file.
          *@param filename a char* the name of the ogl file.
          */
-        Model( char* filename);
+        Model( const char* filename);
+        
+        /**
+         *a constructor.
+         *sets the data of the model name to the information int the ogl file.
+         *@param filename a char* the name of the ogl file.
+         */
+        Model(std::string filename);
         
         /**
          *Draws the model.
@@ -31,7 +39,8 @@ class Model{
         void draw(GLint pos);
         
     private:
-        
+        void init(const char* filename);
+    
         int nfaces, nVertices;
         GLuint vertexBuffer;
         GLuint elementBuffer;

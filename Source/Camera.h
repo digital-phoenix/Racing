@@ -24,7 +24,8 @@ class Camera: public Matrix4f{
          *The constructor set the camera matrix to an identity matrix
          */
         Camera():Matrix4f(){};
-        
+            
+
         /**
          *moves the camera forward.
          *@param foward a GLfloat representing the amount to move the camera forward can be negative to move the camera back.
@@ -42,8 +43,24 @@ class Camera: public Matrix4f{
          *@param up a GLfloat representing the amount to move the camera up can be negative to move the camera down.
          */
         void moveUp(GLfloat up){ Matrix4f::translate(0.0f,-up,0.0f); }
-    
-    
+        
+        /**
+         *moves the camera.
+         *@param x a GLfloat representing the amount to move the camera in the x direction.
+         *@param y a GLfloat representing the amount to move the camera in the y direction.
+         *@param z a GLfloat representing the amount to move the camera in the z direction.
+         */
+        void move(GLfloat x, GLfloat y, GLfloat z){ Matrix4f::translate(-x,-y,-z); }
+        
+        /**
+         *moves the camera.
+         *@param x a GLfloat representing the amount to move the camera in the x direction.
+         *@param y a GLfloat representing the amount to move the camera in the y direction.
+         *@param z a GLfloat representing the amount to move the camera in the z direction.
+         */
+        void rotate(GLfloat x, GLfloat y, GLfloat z){ Matrix4f::rotate(-x,-y,-z); }
+
+        void clear();
 };
 
 

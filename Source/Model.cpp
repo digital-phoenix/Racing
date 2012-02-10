@@ -10,10 +10,20 @@
 #include <iostream>
 #include "Model.h"
 
-Model::Model( char* filename){
+Model::Model( const char* filename){
+
+    init(filename);
+
+}
+
+Model::Model( std::string filename){
+
+    init( filename.c_str() );
     
-    
-	
+}
+
+void Model::init(const char* filename){
+
 	std::ifstream fin(filename, std::ifstream::in);
     if (!fin.is_open() ) {
         std::cout<<"error opening file "<<filename<<'\n';
@@ -59,13 +69,12 @@ Model::Model( char* filename){
     int findex=0;
     
 	while ( fin>>s ) {
-
+        
 		if(s=="v"){
 			
             for (int i=0; i<NUM_DIMENSIONS; i++) {
                 fin>>vertices[vindex++];
             }
-            vertices[vindex -1] += 10.0f;
             vertices[vindex++] = 1.0f;
 			
 		}else if(s=="f"){
@@ -103,12 +112,10 @@ Model::Model( char* filename){
     delete [] faces;
     delete [] normals;
     
-
-
 }
 
 void Model::draw(GLint pos){
-    
+    //std::cout<<"nfaces="<<nfaces<<" nvertices="<<nVertices<<'\n';
     glBindBuffer( GL_ARRAY_BUFFER, vertexBuffer);
     glVertexAttribPointer( pos, 4, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*4, (void*)0 );
     glEnableVertexAttribArray( pos);

@@ -19,6 +19,32 @@ Matrix4f Matrix4f::operator=(const Matrix& rhs ){
     return *this;
 }
 
+const Matrix4f Matrix4f::operator*(const Matrix4f &rhs)const{
+    Matrix4f newMatrix = *this;
+    newMatrix *=rhs;
+    return newMatrix;
+}
+
+const Matrix Matrix4f::operator*(const Vector &rhs)const{
+    
+    
+    std::vector<GLfloat> v;
+    v.push_back( rhs.getX());
+    v.push_back( rhs.getY());
+    v.push_back( rhs.getZ());
+    v.push_back( rhs.getW());
+    
+    Matrix vectorMatrix( 1, 4, v);
+    
+    Matrix newMatrix = *this;
+    
+    newMatrix *=vectorMatrix;
+    
+    return newMatrix;
+
+}
+
+
 std::vector<GLfloat> Matrix4f::constructIdentity(){
     GLfloat m[]={1,0,0,0,
                 0,1,0,0,
@@ -34,8 +60,8 @@ Matrix4f Matrix4f::translate(GLfloat x, GLfloat y, GLfloat z){
         0.0, 0.0, 1.0, 0.0,
         x,   y,   z,   1.0};
     
-    Matrix4f scaleMatrix(std::vector<GLfloat>(m, m+ sizeof(m)/sizeof(GLfloat) ) );
-    (*this) *= scaleMatrix;
+    Matrix4f translationMatrix(std::vector<GLfloat>(m, m+ sizeof(m)/sizeof(GLfloat) ) );
+    (*this) *= translationMatrix;
     
     return  *this;
     
@@ -48,8 +74,8 @@ Matrix4f Matrix4f::scale(GLfloat x, GLfloat y, GLfloat z){
         0.0, 0.0, z,   0.0,
         0.0, 0.0, 0.0, 1.0};
 
-    Matrix4f translationMatrix(std::vector<GLfloat>(m, m+ sizeof(m)/sizeof(GLfloat) ) );
-    (*this) *= translationMatrix;
+    Matrix4f scaleMatrix(std::vector<GLfloat>(m, m+ sizeof(m)/sizeof(GLfloat) ) );
+    (*this) *= scaleMatrix;
     
     return  *this;
     

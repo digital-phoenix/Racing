@@ -7,3 +7,9 @@
 //
 
 #include <iostream>
+#include"Camera.h"
+
+void Camera::clear(){
+    Camera  identity;
+    (*this) = identity;
+}

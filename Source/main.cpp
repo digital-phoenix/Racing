@@ -22,30 +22,23 @@
 #include"Matrix.h"
 #include"Matrix4f.h"
 #include "Model.h"
+#include"SpriteManager.h"
+#include"Vector.h"
+#include"Player.h"
 
+#include<time.h>
 #include<math.h>
 
 
 
-typedef struct{
-    
-    GLuint vertexShader, fragmentShader, program;
-    
-    struct {
-        GLint colour;  
-        GLint modelViewProjectionMatrix;
-    }uniforms;
-    
-    struct{
-        GLint pos;
-    }attributes;
-    
-}shaderResources;
 
 Frustum projectionMatrix;
 shaderResources shader;
 Model *test;
+Player *player;
 Camera camera;
+bool cameraLock=true;
+bool isPaused =false;
 
 void ChangeSize(int w, int h)
 {
@@ -63,6 +56,29 @@ void ChangeSize(int w, int h)
 
 void SetupRC()
 {
+    
+    SpriteManager *sprites = SpriteManager::instance();
+    
+    Vector p(0.0f,0.0f,0.0f);
+    player = new Player("resources/Models/cube.ogl", p);
+    
+    sprites->AddSprite( player);
+    
+    std::string filename="resources/Models/cube.ogl";
+    test = new Model(filename);
+    
+    /*
+    Vector v((GLfloat)(0), (GLfloat)(0), (GLfloat) (5) );
+    sprites->AddSprite( new Sprite("resources/Models/cube.ogl", v) );
+    */
+    for (int i=0; i<30; i++) {
+        
+        Vector v((GLfloat)(0), (GLfloat)(i *3 ), (GLfloat) (5) );
+        
+        sprites->AddSprite(  new Sprite("resources/Models/cube.ogl", v, i*8, i*2, i*5) );
+        
+    }
+    
 	glEnable(GL_DEPTH_TEST);
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	
@@ -103,69 +119,132 @@ void SetupRC()
     
     shader.attributes.pos = glGetAttribLocation( shader.program, "position");
     
-    test = new Model("resources/Models/cube.ogl");
+
 }
 
 
 
 void RenderScene(void)
 {
-	//std::cout<<"Rendering Scene\n";
-	// Clear the window with current clearing color
     
     
+    static clock_t lastTime = 0;
+    
+    clock_t now;
+    
+    now = clock();
+    
+
+    SpriteManager* sprites = SpriteManager::instance();
+    
+    if (!isPaused && now -lastTime > CLOCKS_PER_SEC/60) {
+        sprites->update();
+    }
+    
+    lastTime = now;
     
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+    
+    Matrix4f ViewProjectionMatrix;
+    
+    if (!cameraLock) {
+        ViewProjectionMatrix =   projectionMatrix * camera;
+    }else{
+        ViewProjectionMatrix =   projectionMatrix * player->getCamera();
+    }
 
     
-	GLfloat vRed[] = { 1.0f, 0.0f, 0.0f, 1.0f };
-    Matrix4f modelView;
- 
-    Matrix4f modelViewProjectionMatrix; 
-    modelViewProjectionMatrix =   projectionMatrix * camera * modelView;
-	glUseProgram( shader.program );
-	
+    /*
+    GLfloat vRed[] = { 1.0f, 0.0f, 0.0f, 1.0f };
+    
+    
+    glUseProgram( shader.program );
     glUniform4f( shader.uniforms.colour, vRed[0], vRed[1], vRed[2], vRed[3] );
-    
-    modelViewProjectionMatrix.loadUniform(shader.uniforms.modelViewProjectionMatrix);
-    
-    test->draw(shader.attributes.pos);
+        
 
+    Matrix4f modelView;
+    //modelView.rotate( [0], rotation[1], rotation[2]);
+    modelView.translate( 0, 0, 5 );
+    
+    Matrix4f modelViewProjectionMatrix =ViewProjectionMatrix * modelView;
+    
+    modelViewProjectionMatrix.loadUniform( shader.uniforms.modelViewProjectionMatrix);
+    
+    test->draw( shader.attributes.pos );
+*/
+    sprites->draw( ViewProjectionMatrix, shader);
+    
     // Perform the buffer swap to display back buffer
 	glutSwapBuffers();
 	
 	glutPostRedisplay();
 }
 
+void Keys(unsigned char key, int x, int y){
+    
+    if ( key =='c') {
+        if (!cameraLock) {
+            camera = player->getCamera();
+        }
+        cameraLock = !cameraLock;
+    }
+    
+    if (key == 'p') {
+        isPaused = !isPaused;
+    }
+}
+
 void SpecialKeys(int key, int x, int y){
     
     GLfloat dist = 1.0f;
     
-    if (key == GLUT_KEY_UP) {
-        camera.moveFoward(dist);
+    if( !cameraLock ){
+        
+        if (key == GLUT_KEY_UP) {
+            camera.moveFoward(dist);
+        }
+        if (key == GLUT_KEY_DOWN) {
+            camera.moveFoward(-dist);
+        }
+        if (key == GLUT_KEY_LEFT) {
+            camera.moveRight(-dist);
+        }
+        if (key == GLUT_KEY_RIGHT) {
+            camera.moveRight(dist);
+        }
     }
-    if (key == GLUT_KEY_DOWN) {
-        camera.moveFoward(-dist);
-    }
-    if (key == GLUT_KEY_LEFT) {
-        camera.moveRight(-dist);
-    }
-    if (key == GLUT_KEY_RIGHT) {
-        camera.moveRight(dist);
+    else{
+        GLfloat acceleration =0.0f;
+        GLfloat rotationChange =0.0f;
+        
+        if (key == GLUT_KEY_UP) {
+            acceleration =0.1f;
+        }
+        if (key == GLUT_KEY_DOWN) {
+            acceleration =-0.1f;
+        }
+        if (key == GLUT_KEY_LEFT) {
+            rotationChange = 3.0f;
+        }
+        if (key == GLUT_KEY_RIGHT) {
+            rotationChange = -3.0f;
+        }
+        player->SetAcceleration( acceleration );
+        player->SetRotation(rotationChange);
     }
 }
 
 int main(int argc, char* argv[])
 {
-	
-    
-	glutInit(&argc, argv);
+
+    glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH | GLUT_STENCIL);
 	glutInitWindowSize(800, 600);
 	glutCreateWindow("Model");
     
     glutReshapeFunc(ChangeSize);
     glutSpecialFunc(SpecialKeys);
+    glutKeyboardFunc( Keys );
     glutDisplayFunc(RenderScene);
 	
 	GLenum err = glewInit();
