@@ -59,7 +59,7 @@ void SetupRC()
     
     SpriteManager *sprites = SpriteManager::instance();
     
-    Vector p(0.0f,0.0f,0.0f);
+    Vector p(0.0f,0.0f,-1.0f);
     player = new Player("resources/Models/cube.ogl", p);
     
     sprites->AddSprite( player);
@@ -73,7 +73,7 @@ void SetupRC()
     */
     for (int i=0; i<30; i++) {
         
-        Vector v((GLfloat)(0), (GLfloat)(i *3 ), (GLfloat) (5) );
+        Vector v((GLfloat)(0), (GLfloat)(i *3 ), (GLfloat) (10) );
         
         sprites->AddSprite(  new Sprite("resources/Models/cube.ogl", v, i*8, i*2, i*5) );
         

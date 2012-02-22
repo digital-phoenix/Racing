@@ -10,7 +10,8 @@
 #define Racing_Camera_h
 
 #include"Matrix4f.h"
-
+#include"Vector.h"
+#include<vector>
 /**
  *A camera class. 
  *A camera used to control and alter the view of the user.
@@ -25,7 +26,7 @@ class Camera: public Matrix4f{
          */
         Camera():Matrix4f(){};
             
-
+        Camera(std::vector<Vector>values):Matrix4f(values){};
         /**
          *moves the camera forward.
          *@param foward a GLfloat representing the amount to move the camera forward can be negative to move the camera back.
@@ -52,6 +53,7 @@ class Camera: public Matrix4f{
          */
         void move(GLfloat x, GLfloat y, GLfloat z){ Matrix4f::translate(-x,-y,-z); }
         
+        void move(const Vector& p){move(p.getX(), p.getY(), p.getZ() ); }
         /**
          *moves the camera.
          *@param x a GLfloat representing the amount to move the camera in the x direction.
@@ -59,7 +61,8 @@ class Camera: public Matrix4f{
          *@param z a GLfloat representing the amount to move the camera in the z direction.
          */
         void rotate(GLfloat x, GLfloat y, GLfloat z){ Matrix4f::rotate(-x,-y,-z); }
-
+        
+        //void lookAt( Vector view, Vector position);
         void clear();
 };
 

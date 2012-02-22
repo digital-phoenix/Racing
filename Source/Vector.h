@@ -9,6 +9,7 @@
 #ifndef Racing_Vector_h
 #define Racing_Vector_h
 
+#include<math.h>
 #include"Graphics.h"
 #include"Matrix.h"
 /*
@@ -31,7 +32,7 @@ class Vector{
          *a copy constructor that copies the matrix values
          *@param m a 1 by 4 Matrix to copy
          */
-        Vector( Matrix m);
+        Vector( const Matrix& m);
     
         /**
          *A constructor.
@@ -46,7 +47,10 @@ class Vector{
          *overloads the = operator
          */
         Vector operator=(const Vector& rhs);
+        
+        const Vector operator-(const Vector& rhs)const;
 
+        const Vector operator*(const Vector& rhs)const;
         /**
          *setValues sets the values of the vector.
          *@param x GLfloat the x value of the vector.
@@ -83,6 +87,7 @@ class Vector{
 
         GLfloat getW()const{return w;}
     
+        void setW(GLfloat w){this->w  = w;}
         /**
          * dot returns the dot product of this and another vector
          *@param other vector the other vector used to compute the dot product
@@ -90,7 +95,10 @@ class Vector{
          */
     
         GLfloat dot( Vector other);
-        
+    
+        float magnitudeSquared(){ return (x*x +y*y +z*z);}
+        float magnitude(){ return sqrt(magnitudeSquared()); }
+        void normalize();
         void print();
     
     private:

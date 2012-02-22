@@ -56,6 +56,7 @@ class Matrix4f: public Matrix{
          */
         Matrix4f( std::vector<GLfloat> values):Matrix(4,4,values){};
     
+        Matrix4f(std::vector<Vector>values);
         /**
          *transforms this matrix by rotating it.
          *@param  x GLfloat the x angle to be rotated by.

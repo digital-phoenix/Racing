@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include"Player.h"
+#include"3dmath.h"
 
 Player::Player(std::string filename, Vector p, GLfloat xRot, GLfloat yRot, GLfloat zRot): Sprite(filename, p, xRot , yRot, zRot), camera(){
 
@@ -23,7 +24,7 @@ void Player::update(){
     SetSpeed( speed + acceleration);
 
     
-    std::cout<<" position z="<<position.getZ()<<" speed= "<<speed<<" rotationChange = "<<rotationChange<<'\n';
+    //std::cout<<" position z="<<position.getZ()<<" speed= "<<speed<<" rotationChange = "<<rotationChange<<'\n';
     
     Matrix4f rotationMatrix;
     rotationMatrix.rotate( rotation[0], rotation[1], rotation[2]);
@@ -31,18 +32,39 @@ void Player::update(){
     Matrix newDirection = rotationMatrix *direction;
     position.setValues( position.getX() + (speed * newDirection[0]), position.getY() + (speed * newDirection[1])  , position.getZ() + (speed * newDirection[2]) );
 
-    
+    std::cout<<"player position=";
+    position.print();
     
     rotation[1] += rotationChange;
     
-    camera.clear();
-    camera.rotate(30.0f, 0.0f, 0.0f);
-
-    camera.move( position.getX(), position.getY() + 5.0f, position.getZ() - CAMERA_DISTANCE );
-
-    camera.rotate(rotation[0] , rotation[1], rotation[2]);
-
+    Vector cameraPosition(position.getX() - (CAMERA_DISTANCE * newDirection[0]), position.getY() + 5.0f -(CAMERA_DISTANCE * newDirection[1]), position.getZ()  -(CAMERA_DISTANCE *newDirection[2]) );
     
+    std::cout<<"camera position=";
+    cameraPosition.print();
+    /*Vector view = ( position - cameraPosition );
+    std::cout<<"not normalized view=";
+    view.print();
+    //view.normalize();*/
+    
+    newDirection.printMatrix();
+    
+    GLfloat angle =0;
+    
+    if( EPSILON > newDirection[1] && newDirection[1] > -EPSILON ){
+        angle = radToDeg( acos( newDirection[2] ) ); //acos( cameraView . newDirection / ( || cameraView || ||newDirection||) )
+        if( newDirection[0] < 0)
+            angle = -angle;
+    }
+
+    std::cout<<"angle="<<angle<<'\n';
+    //camera.lookAt( view, cameraPosition);
+    camera.clear();
+
+    camera.rotate(0,angle,0);
+    camera.move(cameraPosition);
+
+
+    camera.printMatrix();
     Sprite::update();
 }
 

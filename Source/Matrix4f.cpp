@@ -12,6 +12,18 @@
 
 
 
+Matrix4f::Matrix4f(std::vector<Vector>values):Matrix(4,4,constructIdentity()){
+    this->values.clear();
+    for (std::vector<Vector>::iterator it =values.begin(); it!=values.end(); it++) {
+        this->values.push_back(it->getX() );
+        this->values.push_back(it->getY() );
+        this->values.push_back(it->getZ() );
+        this->values.push_back(it->getW() );
+    }
+    
+
+}
+
 Matrix4f Matrix4f::operator=(const Matrix& rhs ){
     if(rhs.getWidth()!=4 || rhs.getHeight()!=4)
         return *this;

@@ -10,7 +10,6 @@
 #define Racing_Matrix_h
 
 #include<vector>
-
 #include<GL/glew.h>
 
 #ifdef __APPLE__
